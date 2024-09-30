@@ -41,3 +41,7 @@ def destroy(id:int, db: Session = Depends(get_db)):
     # db.commit()
     # return 'done'
     return user.destroy(id,db)
+
+@router.put('/{id}', status_code=status.HTTP_204_NO_CONTENT)
+def update(id: int, request: schemas.UpdateUser, db: Session = Depends(get_db)):
+    return user.update(id, request, db)

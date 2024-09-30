@@ -1,6 +1,6 @@
 from fastapi import APIRouter,Depends, HTTPException,status
 from fastapi. security import OAuth2PasswordRequestForm
-from routers.token import create_access_token
+from routers.jwt_token import create_access_token
 import schemas,database,models,token
 from hashing import Hash
 from sqlalchemy.orm import Session
