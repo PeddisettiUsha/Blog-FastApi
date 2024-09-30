@@ -6,8 +6,8 @@ class BlogSchema(BaseModel): # creating pydantic model to get title and body,sch
     title: str
     body: str
     # user_id: int
-    # class Config():
-    #     orm_mode = True
+    class Config():
+        orm_mode = True
 
 class Blog(BlogSchema):
     class Config():
@@ -19,6 +19,13 @@ class User(BaseModel):
     name: str
     email: str
     password: str
+
+class UpdateUser(BaseModel):
+    name: str
+    email: str
+
+    class Config:
+        orm_mode = True
 
 class ShowUser(BaseModel):
     name: str
@@ -45,4 +52,4 @@ class Token(BaseModel):
 
 
 class TokenData(BaseModel):
-    username: Optional[str] = None
+    email: Optional[str] = None

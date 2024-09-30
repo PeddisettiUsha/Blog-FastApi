@@ -27,3 +27,14 @@ def destroy(id:int,db: Session):
      db.delete(user)
      db.commit()
      return 'done'
+
+def update(id: int, request, db: Session):
+    user = db.query(models.User).filter(models.User.id == id)
+
+    if not user.first():
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
+                            detail=f"User with id {id} not found")
+
+    user.update(request.dict())  # Ensure request is a Pydantic model with `dict()` method
+    db.commit()
+    return 'updated'
